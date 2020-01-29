@@ -1,0 +1,21 @@
+{
+  "name": "desafio-academia-node-ficr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "repository": "https://github.com/wallisonmoura/desafio-academia-node-ficr.git",
+  "author": "wallisonmoura <wallison_cedaspy@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^16.40.0",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
