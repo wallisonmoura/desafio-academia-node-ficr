@@ -13,6 +13,10 @@ class CurriculoController {
 
       const { name: login, birthday, location, email, gender } = ApiFace.data;
       const { bio, avatar_url, html_url } = ApiGitUser.data;
+      //const result = ApiGitRep.map(obj => {
+
+      //})
+
       //const { size, name: nome, url } = ApiGitRep.data;
 
       const profile = {
@@ -34,10 +38,10 @@ class CurriculoController {
           }
         }
       };
-      res.json(profile);
+      return res.json(profile);
     } catch (error) {
       console.error("Problemas com a aplicação");
-      //return next(error);
+      return next(error);
     }
   }
 }
