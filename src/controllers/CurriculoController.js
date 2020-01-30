@@ -13,7 +13,7 @@ class CurriculoController {
 
       const { name: login, birthday, location, email, gender } = ApiFace.data;
       const { bio, avatar_url, html_url } = ApiGitUser.data;
-      const { size, name: nome, url } = ApiGitRep.data;
+      //const { size, name: nome, url } = ApiGitRep.data;
 
       const profile = {
         facebook: {
@@ -30,9 +30,7 @@ class CurriculoController {
         github: {
           perfil: html_url,
           alguns_repositorios: {
-            size: size,
-            nome: nome,
-            url: url
+            ApiGitRep
           }
         }
       };
