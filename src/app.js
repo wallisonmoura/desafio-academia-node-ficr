@@ -6,7 +6,12 @@ const router = require("./routes");
 class App {
   constructor() {
     this.express = express();
+    this.middlewares();
     this.routes();
+  }
+
+  middlewares() {
+    this.express.use(express.json());
   }
 
   routes() {
