@@ -1,10 +1,10 @@
 const dados = {
   formacao: [
     {
-      instituicao: "ficr",
-      curso: "ADS",
+      instituicao: "Faculdade Católica Imaculada Conceição do Recife",
+      curso: "Análise e Desenvolvimento de Sistemas",
       inicio: "26/07/2018",
-      termino: "23/06/2021"
+      termino: "23/06/2020"
     }
   ],
   experiencia_profissional: [

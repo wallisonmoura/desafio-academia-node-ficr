@@ -15,12 +15,12 @@ class CurriculoController {
       const { bio, avatar_url, html_url } = ApiGitUser.data;
 
       const result = ApiGitRep.data.map(repo => {
-        let r = {
+        let i = {
           size: repo.size,
           name: repo.name,
           url: repo.url
         };
-        return r;
+        return i;
       });
 
       const qtdRepo = result.splice(0, 3).sort((a, b) => {
@@ -34,7 +34,7 @@ class CurriculoController {
           nome: login,
           data_nascimento: birthday,
           endereço: location.name,
-          genero: gender,
+          genero: gender === "male" ? "masculino" : "feminino",
           email: email,
           bio: bio,
           foto: avatar_url,

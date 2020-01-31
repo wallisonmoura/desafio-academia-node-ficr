@@ -1,8 +1,8 @@
 const Octokit = require("@octokit/rest");
-const { authToken } = require("../config/github");
+const { gitToken } = require("../config/github");
 
 const octokit = new Octokit({
-  auth: authToken
+  auth: gitToken
 });
 
 module.exports = octokit;
