@@ -1,12 +1,13 @@
 const ServiceGithub = require("../services/github");
 const ServiceFacebook = require("../services/facebook");
+const FaceToken = require("../config/facebook");
 const Dados = require("../models/dados");
 
 class CurriculoController {
   async get(req, res, next) {
     try {
       const ApiFace = await ServiceFacebook.get(
-        `/me?fields=id%2Cname%2Cbirthday%2Clocation%2Cgender&access_token=${process.env.FACEBOOK_TOKEN}`
+        `/me?fields=id%2Cname%2Cbirthday%2Clocation%2Cgender&access_token=${FaceToken}`
       );
       const ApiGitUser = await ServiceGithub.request("/user");
       const ApiGitRep = await ServiceGithub.request("/user/repos");
@@ -15,15 +16,14 @@ class CurriculoController {
       const { bio, avatar_url, html_url } = ApiGitUser.data;
 
       const result = ApiGitRep.data.map(repo => {
-        let i = {
+        return {
           size: repo.size,
           name: repo.name,
           url: repo.url
         };
-        return i;
       });
 
-      const qtdRepo = result.splice(0, 3).sort((a, b) => {
+      const orderRepo = result.splice(0, 3).sort((a, b) => {
         if (a.size < b.size) return 1;
         if (a.size > b.size) return -1;
         return 0;
@@ -43,9 +43,7 @@ class CurriculoController {
         },
         github: {
           perfil: html_url,
-          alguns_repositorios: {
-            qtdRepo
-          }
+          alguns_repositorios: orderRepo
         }
       };
       return res.json(profile);
