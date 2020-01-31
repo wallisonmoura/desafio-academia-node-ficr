@@ -13,11 +13,21 @@ class CurriculoController {
 
       const { name: login, birthday, location, email, gender } = ApiFace.data;
       const { bio, avatar_url, html_url } = ApiGitUser.data;
-      //const result = ApiGitRep.map(obj => {
 
-      //})
+      const result = ApiGitRep.data.map(repo => {
+        let r = {
+          size: repo.size,
+          name: repo.name,
+          url: repo.url
+        };
+        return r;
+      });
 
-      //const { size, name: nome, url } = ApiGitRep.data;
+      const qtdRepo = result.splice(0, 3).sort((a, b) => {
+        if (a.size < b.size) return 1;
+        if (a.size > b.size) return -1;
+        return 0;
+      });
 
       const profile = {
         facebook: {
@@ -34,14 +44,14 @@ class CurriculoController {
         github: {
           perfil: html_url,
           alguns_repositorios: {
-            ApiGitRep
+            qtdRepo
           }
         }
       };
       return res.json(profile);
     } catch (error) {
       console.error("Problemas com a aplicação");
-      return next(error);
+      return error;
     }
   }
 }
