@@ -1,3 +1,1 @@
-module.exports = {
-  gitToken: process.env.GITHUB_TOKEN
-};
+module.exports = process.env.GITHUB_TOKEN;
